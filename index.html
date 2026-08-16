@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coruja Sistemas – Tecnologia para Imobiliárias | Sistema, CRM, Site Imobiliário</title>
+  <meta name="description" content="Sistema completo para imobiliárias: gestão de imóveis, CRM, site imobiliário integrado, integração com portais e rede de imóveis. Teste grátis por 7 dias.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #8d02d8;
+      --primary-light: #a020f0;
+      --primary-dark: #6b00a8;
+      --accent: #8d02d8;
+      --accent-hover: #7a02bd;
+      --accent-light: #f3e8ff;
+      --text: #0a0a0a;
+      --text-secondary: #525252;
+      --text-light: #a3a3a3;
+      --bg: #ffffff;
+      --bg-alt: #fafafa;
+      --bg-warm: #faf5ff;
+      --bg-dark: #0a0a0a;
+      --border: #e8ecf1;
+      --border-light: #f1f5f9;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,.04);
+      --shadow: 0 4px 20px rgba(0,0,0,.06);
+      --shadow-lg: 0 16px 48px rgba(0,0,0,.08);
+      --shadow-card: 0 1px 3px rgba(0,0,0,.03), 0 0 0 1px rgba(0,0,0,.04);
+      --transition: .3s cubic-bezier(.4,0,.2,1);
+      --max-width: 1200px;
+    }
+
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: 'Inter', -apple-system, sans-serif; color: var(--text); line-height: 1.6; overflow-x: hidden; background: #fff; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; font-family: inherit; }
+    ul { list-style: none; }
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+
+    /* ── BUTTONS ── */
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px; border-radius: 100px; font-weight: 600; font-size: .9rem; transition: var(--transition); white-space: nowrap; }
+    .btn-primary { background: var(--text); color: #fff; }
+    .btn-primary:hover { background: #1e293b; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,.15); }
+    .btn-secondary { background: #fff; color: var(--text); border: 1.5px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--text); }
+    .btn-accent { background: var(--accent); color: #fff; }
+    .btn-accent:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(141,2,216,.3); }
+    .btn-outline { background: transparent; color: var(--text); border: 1.5px solid var(--border); }
+    .btn-outline:hover { border-color: var(--text); background: var(--bg-alt); }
+    .btn-sm { padding: 10px 20px; font-size: .82rem; }
+    .btn-lg { padding: 16px 36px; font-size: .95rem; }
+    .btn-icon { width: 18px; height: 18px; }
+
+    /* ── SECTION ── */
+    .section { padding: 100px 0; }
+    .section-header { text-align: center; max-width: 640px; margin: 0 auto 64px; }
+    .section-badge { display: inline-block; padding: 6px 16px; border-radius: 100px; font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 20px; background: var(--bg-alt); color: var(--text-secondary); border: 1px solid var(--border); }
+    .section-badge-accent { background: var(--accent-light); color: var(--primary); border-color: transparent; }
+    .section-title { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.12; margin-bottom: 16px; letter-spacing: -.02em; }
+    .section-subtitle { font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; }
+
+    /* ── HEADER ── */
+    .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 12px 0; transition: var(--transition); }
+    .header.scrolled { background: rgba(255,255,255,.92); backdrop-filter: blur(16px) saturate(1.8); box-shadow: 0 1px 0 rgba(0,0,0,.06); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.2rem; color: var(--text); }
+    .logo-dot { width: 32px; height: 32px; border-radius: 10px; background: var(--primary); display: flex; align-items: center; justify-content: center; }
+    .logo-dot svg { width: 18px; height: 18px; color: #fff; }
+    .nav { display: flex; align-items: center; gap: 32px; }
+    .nav-link { font-size: .88rem; font-weight: 500; color: var(--text-secondary); transition: var(--transition); }
+    .nav-link:hover { color: var(--text); }
+    .nav-cta { margin-left: 8px; }
+    .menu-toggle { display: none; background: none; border: none; width: 32px; height: 32px; flex-direction: column; gap: 5px; align-items: center; justify-content: center; }
+    .menu-toggle span { display: block; width: 20px; height: 2px; background: var(--text); border-radius: 2px; transition: var(--transition); }
+
+    /* ── HERO ── */
+    .hero { padding: 120px 0 80px; position: relative; overflow: hidden; background: linear-gradient(180deg, var(--bg-warm) 0%, #fff 100%); }
+    .hero::before { content: ''; position: absolute; top: -200px; right: -100px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(141,2,216,.12) 0%, transparent 70%); pointer-events: none; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: center; }
+    .hero-content { text-align: left; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 6px 6px 16px; border-radius: 100px; background: #fff; border: 1px solid var(--border); font-size: .82rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 28px; box-shadow: var(--shadow-sm); }
+    .hero-badge-new { padding: 4px 12px; border-radius: 100px; background: var(--primary); color: #fff; font-size: .72rem; font-weight: 700; letter-spacing: .04em; }
+    .hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; letter-spacing: -.03em; max-width: none; margin-left: 0; margin-right: 0; }
+    .hero h1 .highlight { background: linear-gradient(135deg, #8d02d8, #b44aee); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-subtitle { font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7; max-width: 480px; margin: 0 0 32px; }
+    .hero-actions { display: flex; gap: 12px; justify-content: flex-start; flex-wrap: wrap; margin-bottom: 32px; }
+    .hero-trust { display: flex; align-items: center; justify-content: flex-start; gap: 8px; font-size: .82rem; color: var(--text-light); margin-bottom: 60px; }
+    .hero-trust-dot { width: 6px; height: 6px; border-radius: 50%; background: #34d399; }
+    .hero-pills { display: flex; justify-content: flex-start; gap: 10px; flex-wrap: wrap; margin-bottom: 0; }
+    .hero-pill { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 100px; background: #fff; border: 1px solid var(--border); font-size: .82rem; color: var(--text-secondary); font-weight: 500; }
+    .hero-pill svg { width: 16px; height: 16px; color: var(--primary); }
+    .hero-partners { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--border-light); }
+
+    /* Hero Visual */
+    .hero-visual { position: relative; }
+    .hero-visual::before { content: ''; position: absolute; inset: 10% -5% -10% 5%; background: radial-gradient(ellipse at center, rgba(141,2,216,.15) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+    .hero-mockup-wrapper { max-width: none; margin: 0; position: relative; z-index: 1; }
+    .hero-mockup { background: #fff; border-radius: var(--radius-lg); border: 1px solid var(--border); box-shadow: 0 24px 64px rgba(141,2,216,.12), 0 0 0 1px rgba(0,0,0,.02); overflow: hidden; transform: perspective(1200px) rotateY(-4deg) rotateX(2deg); transition: transform .5s ease; }
+    .hero-visual:hover .hero-mockup { transform: perspective(1200px) rotateY(-2deg) rotateX(1deg); }
+    .hero-mockup-bar { height: 40px; background: var(--bg-alt); border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 16px; gap: 8px; }
+    .hero-mockup-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .hero-mockup-dot:nth-child(1) { background: #fca5a5; }
+    .hero-mockup-dot:nth-child(2) { background: #fde68a; }
+    .hero-mockup-dot:nth-child(3) { background: #86efac; }
+    .hero-mockup-url { margin-left: 16px; padding: 4px 12px; background: #fff; border-radius: 6px; border: 1px solid var(--border); font-size: .72rem; color: var(--text-light); }
+    .hero-mockup-body { padding: 0; }
+    .hero-mockup-body img { width: 100%; display: block; }
+
+    /* Floating stats */
+    .hero-float { position: absolute; background: #fff; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow-lg); padding: 14px 16px; z-index: 10; max-width: 168px; }
+    .hero-float-1 { left: -52px; top: 24px; }
+    .hero-float-2 { left: -56px; bottom: 48px; }
+    .hero-float-3 { right: -48px; top: 56px; }
+    .hero-float-4 { right: -52px; bottom: 72px; }
+    .hero-float-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .hero-float-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .hero-float-icon svg { width: 16px; height: 16px; }
+    .hero-float-icon img { width: 18px; height: 18px; object-fit: contain; }
+    .hero-float-title { font-size: .78rem; font-weight: 700; color: var(--text); line-height: 1.2; }
+    .hero-float-number { font-size: 1.15rem; font-weight: 800; color: var(--primary); line-height: 1.2; margin-bottom: 2px; }
+    .hero-float-label { font-size: .68rem; color: var(--text-light); line-height: 1.35; }
+
+    /* ── PARTNERS BAR ── */
+    .partners { padding: 32px 0 0; }
+    .partners-label { text-align: center; font-size: .78rem; font-weight: 500; color: var(--text-light); margin-bottom: 24px; }
+    .partners-logos { display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
+    .partners-logos img { height: 28px; opacity: .35; filter: grayscale(100%); transition: var(--transition); }
+    .partners-logos img:hover { opacity: .8; filter: grayscale(0%); }
+
+    /* ── FEATURE CARDS (Active Style) ── */
+    .features-section { padding: 120px 0; }
+    .fc-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 20px; }
+    .fc-grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .fc-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px 28px 0; position: relative; overflow: hidden; transition: var(--transition); display: flex; flex-direction: column; }
+    .fc-card:hover { border-color: #d1d5db; box-shadow: var(--shadow); }
+    .fc-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+    .fc-card h3 { font-size: 1.05rem; font-weight: 700; letter-spacing: -.01em; }
+    .fc-card-desc { font-size: .85rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 24px; }
+    .fc-card-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .fc-card-icon svg { width: 18px; height: 18px; }
+    .fc-card-icon-orange { background: #f3e8ff; color: #8d02d8; }
+    .fc-card-icon-blue { background: #eff6ff; color: #3b82f6; }
+    .fc-card-icon-green { background: #f0fdf4; color: #22c55e; }
+    .fc-card-icon-purple { background: #f5f3ff; color: #8b5cf6; }
+    .fc-card-icon-rose { background: #fff1f2; color: #f43f5e; }
+    .fc-card-icon-cyan { background: #ecfeff; color: #06b6d4; }
+    .fc-card-icon-amber { background: #f3e8ff; color: #8d02d8; }
+    .fc-card-icon-indigo { background: #eef2ff; color: #6366f1; }
+
+    .fc-card-mockup { flex: 1; margin: 0 -4px; border-radius: var(--radius) var(--radius) 0 0; overflow: hidden; border: 1px solid var(--border-light); border-bottom: none; background: var(--bg-alt); min-height: 200px; }
+    .fc-card-mockup img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+
+    /* Mockup CSS art */
+    .mock-ui { padding: 16px; height: 100%; }
+    .mock-topbar { height: 28px; background: #fff; border-radius: 6px; border: 1px solid var(--border-light); margin-bottom: 12px; display: flex; align-items: center; padding: 0 10px; }
+    .mock-topbar-dot { width: 40px; height: 8px; background: var(--border); border-radius: 4px; }
+    .mock-sidebar-mini { width: 48px; background: #fff; border-radius: 8px; border: 1px solid var(--border-light); padding: 10px 8px; display: flex; flex-direction: column; gap: 8px; position: absolute; left: 16px; top: 56px; }
+    .mock-sidebar-mini-item { width: 32px; height: 8px; border-radius: 4px; background: var(--border); }
+    .mock-sidebar-mini-item.active { background: var(--primary); }
+
+    .mock-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .mock-card-ui { background: #fff; border-radius: 8px; border: 1px solid var(--border-light); padding: 10px; }
+    .mock-card-ui-img { height: 48px; background: linear-gradient(135deg, var(--border-light), var(--border)); border-radius: 6px; margin-bottom: 8px; }
+    .mock-card-ui-line { height: 6px; background: var(--border); border-radius: 3px; margin-bottom: 4px; }
+    .mock-card-ui-line.w60 { width: 60%; }
+    .mock-card-ui-line.w80 { width: 80%; }
+    .mock-card-ui-line.w40 { width: 40%; }
+
+    .mock-table { background: #fff; border-radius: 8px; border: 1px solid var(--border-light); overflow: hidden; }
+    .mock-table-header { height: 28px; background: var(--bg-alt); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; padding: 0 10px; gap: 20px; }
+    .mock-table-header span { height: 6px; width: 50px; background: var(--border); border-radius: 3px; }
+    .mock-table-row { height: 32px; border-bottom: 1px solid var(--border-light); display: flex; align-items: center; padding: 0 10px; gap: 20px; }
+    .mock-table-row span { height: 6px; border-radius: 3px; background: var(--border-light); }
+    .mock-table-row span:first-child { width: 60px; background: var(--border); }
+    .mock-table-row span:nth-child(2) { width: 80px; }
+    .mock-table-row span:nth-child(3) { width: 40px; }
+    .mock-table-row .tag { width: 36px; height: 14px; border-radius: 4px; background: #dcfce7; }
+
+    .mock-chat { background: #fff; border-radius: 8px; border: 1px solid var(--border-light); padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .mock-chat-bubble { padding: 8px 12px; border-radius: 8px; max-width: 80%; }
+    .mock-chat-bubble.sent { background: var(--primary); align-self: flex-end; }
+    .mock-chat-bubble.received { background: var(--bg-alt); border: 1px solid var(--border-light); }
+    .mock-chat-line { height: 5px; border-radius: 3px; }
+    .mock-chat-bubble.sent .mock-chat-line { background: rgba(255,255,255,.3); }
+    .mock-chat-bubble.received .mock-chat-line { background: var(--border); }
+
+    .mock-kanban { display: flex; gap: 8px; }
+    .mock-kanban-col { flex: 1; background: #fff; border-radius: 8px; border: 1px solid var(--border-light); padding: 8px; }
+    .mock-kanban-header { height: 8px; border-radius: 4px; margin-bottom: 8px; }
+    .mock-kanban-item { height: 40px; background: var(--bg-alt); border-radius: 6px; border: 1px solid var(--border-light); margin-bottom: 6px; padding: 6px; }
+    .mock-kanban-item-line { height: 4px; border-radius: 2px; background: var(--border); margin-bottom: 4px; }
+    .mock-kanban-item-line.short { width: 60%; }
+
+    .mock-dashboard { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .mock-stat-card { background: #fff; border-radius: 8px; border: 1px solid var(--border-light); padding: 10px; }
+    .mock-stat-value { font-size: .7rem; font-weight: 800; color: var(--text); margin-bottom: 2px; }
+    .mock-stat-label { height: 4px; width: 50px; background: var(--border); border-radius: 2px; }
+    .mock-chart { height: 40px; display: flex; align-items: flex-end; gap: 3px; margin-top: 6px; }
+    .mock-chart-bar { width: 100%; border-radius: 2px 2px 0 0; }
+
+    /* ── INTEGRATION FLOATING ICONS ── */
+    .integrations-float { padding: 100px 0; position: relative; text-align: center; overflow: hidden; background: var(--bg-alt); }
+    .integrations-float .section-title { margin-bottom: 12px; }
+    .integrations-float .section-subtitle { margin-bottom: 48px; }
+    .integrations-icons-wrap { position: relative; width: 600px; height: 340px; margin: 0 auto; }
+    .int-icon { position: absolute; width: 52px; height: 52px; border-radius: 14px; background: #fff; border: 1px solid var(--border); box-shadow: var(--shadow); display: flex; align-items: center; justify-content: center; overflow: hidden; transition: var(--transition); z-index: 1; }
+    .int-icon:hover { transform: scale(1.15); box-shadow: var(--shadow-lg); z-index: 2; }
+    .int-icon img { width: 32px; height: 32px; object-fit: contain; }
+    .int-icon-text { font-weight: 800; font-size: .6rem; color: var(--primary); text-align: center; line-height: 1.1; }
+    .int-center-card { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); background: #fff; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow-lg); padding: 20px 28px; text-align: left; min-width: 320px; z-index: 3; }
+    .int-center-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .int-center-card-logo { width: 28px; height: 28px; border-radius: 6px; overflow: hidden; }
+    .int-center-card-logo img { width: 100%; height: 100%; object-fit: contain; }
+    .int-center-card-title { font-weight: 700; font-size: .9rem; }
+    .int-center-card-badge { padding: 3px 10px; border-radius: 6px; background: var(--accent-light); color: var(--primary); font-size: .68rem; font-weight: 700; letter-spacing: .02em; margin-left: auto; }
+    .int-center-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+    .int-center-tag { padding: 4px 10px; border-radius: 6px; font-size: .72rem; font-weight: 500; }
+    .int-center-tag.active { background: #8d02d8; color: #fff; }
+    .int-center-tag:not(.active) { background: var(--bg-alt); color: var(--text-secondary); border: 1px solid var(--border); }
+    .int-center-url { display: flex; align-items: center; gap: 8px; font-size: .78rem; color: var(--text-light); }
+    .int-center-url svg { width: 14px; height: 14px; }
+
+    /* ── BENEFITS (Split Layout) ── */
+    .benefits-section { padding: 100px 0; }
+    .benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .benefits-content {}
+    .benefits-content .section-badge { margin-bottom: 20px; }
+    .benefits-content h2 { font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 800; line-height: 1.12; margin-bottom: 16px; letter-spacing: -.02em; }
+    .benefits-content > p { font-size: 1rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 28px; }
+    .benefits-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .benefit-tag { padding: 8px 16px; border-radius: 100px; font-size: .82rem; font-weight: 500; background: var(--bg-alt); color: var(--text-secondary); border: 1px solid var(--border); }
+    .benefits-list { display: flex; flex-direction: column; gap: 0; }
+    .benefit-item { display: flex; gap: 16px; padding: 28px 0; border-bottom: 1px solid var(--border-light); }
+    .benefit-item:first-child { padding-top: 0; }
+    .benefit-item:last-child { border-bottom: none; }
+    .benefit-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .benefit-icon svg { width: 20px; height: 20px; }
+    .benefit-text h4 { font-size: .95rem; font-weight: 700; margin-bottom: 4px; }
+    .benefit-text p { font-size: .85rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* ── LEILAO / CRM SECTIONS ── */
+    .split-section { padding: 100px 0; }
+    .split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .split-visual { position: relative; }
+    .split-visual img { border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); width: 100%; }
+    .split-visual-badge { position: absolute; top: 16px; right: 16px; background: #fff; border-radius: 10px; padding: 8px 12px; box-shadow: var(--shadow); display: flex; align-items: center; gap: 8px; }
+    .split-visual-badge img { height: 24px; width: auto; }
+    .split-content { }
+    .split-content .section-badge { margin-bottom: 20px; }
+    .split-content h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; line-height: 1.15; margin-bottom: 16px; letter-spacing: -.02em; }
+    .split-content > p { font-size: 1rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 28px; }
+    .split-features { display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
+    .split-feature { display: flex; align-items: center; gap: 12px; font-size: .9rem; font-weight: 500; }
+    .split-feature svg { width: 20px; height: 20px; color: #22c55e; flex-shrink: 0; }
+    .split-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 32px; }
+    .split-stat { background: var(--bg-alt); padding: 16px; border-radius: var(--radius-sm); border: 1px solid var(--border-light); }
+    .split-stat-value { font-size: 1.1rem; font-weight: 800; color: var(--text); }
+    .split-stat-label { font-size: .78rem; color: var(--text-light); }
+    .split-grid-reverse .split-visual { order: 2; }
+    .split-grid-reverse .split-content { order: 1; }
+
+    /* ── CRM SECTION (Dark) ── */
+    .crm-section { padding: 100px 0; background: #0a0a0a; color: #fff; position: relative; overflow: hidden; }
+    .crm-section::before { content: ''; position: absolute; top: -200px; right: -100px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(141,2,216,.15) 0%, transparent 70%); pointer-events: none; }
+    .crm-section::after { content: ''; position: absolute; bottom: -150px; left: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(141,2,216,.1) 0%, transparent 70%); pointer-events: none; }
+    .crm-section .container { position: relative; z-index: 1; }
+    .crm-header { text-align: center; max-width: 720px; margin: 0 auto 48px; }
+    .crm-header .section-badge { margin-bottom: 20px; }
+    .crm-header h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 800; line-height: 1.12; margin-bottom: 16px; letter-spacing: -.02em; color: #fff; }
+    .crm-header p { font-size: 1.05rem; color: rgba(255,255,255,.65); line-height: 1.7; }
+    .crm-section .section-badge-accent { background: rgba(141,2,216,.2); color: #d8b4fe; border-color: rgba(141,2,216,.3); }
+    .crm-pain-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 64px; }
+    .crm-pain-stat { text-align: center; padding: 24px 20px; border-radius: var(--radius); border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.04); }
+    .crm-pain-stat strong { display: block; font-size: 1.8rem; font-weight: 800; color: #b44aee; margin-bottom: 6px; letter-spacing: -.02em; }
+    .crm-pain-stat span { font-size: .85rem; color: rgba(255,255,255,.6); line-height: 1.4; }
+    .crm-section .split-content h2 { color: #fff; }
+    .crm-section .split-content > p { color: rgba(255,255,255,.65); }
+    .crm-section .split-feature { color: rgba(255,255,255,.85); }
+    .crm-section .split-feature svg { color: #b44aee; }
+    .crm-section .btn-primary { background: #8d02d8; color: #fff; }
+    .crm-section .btn-primary:hover { background: #a020f0; }
+    .crm-features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 64px; }
+    .crm-feature-card { padding: 24px; border-radius: var(--radius); border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.04); transition: var(--transition); }
+    .crm-feature-card:hover { border-color: rgba(141,2,216,.4); background: rgba(141,2,216,.08); }
+    .crm-feature-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(141,2,216,.2); color: #d8b4fe; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+    .crm-feature-icon svg { width: 20px; height: 20px; }
+    .crm-feature-card h4 { font-size: .95rem; font-weight: 700; margin-bottom: 6px; color: #fff; }
+    .crm-feature-card p { font-size: .82rem; color: rgba(255,255,255,.55); line-height: 1.55; }
+    .crm-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 64px; padding-top: 64px; border-top: 1px solid rgba(255,255,255,.1); }
+    .crm-step { text-align: center; }
+    .crm-step-num { width: 40px; height: 40px; border-radius: 50%; background: #8d02d8; color: #fff; font-weight: 800; font-size: .9rem; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+    .crm-step h4 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: #fff; }
+    .crm-step p { font-size: .85rem; color: rgba(255,255,255,.55); line-height: 1.6; }
+    .crm-cta { text-align: center; margin-top: 48px; }
+    .crm-visual-mockup { background: #1a1a1a; border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,.1); box-shadow: 0 24px 64px rgba(0,0,0,.4); overflow: hidden; }
+    .crm-visual-mockup img { width: 100%; display: block; }
+    .crm-visual-badge { position: absolute; bottom: 16px; left: 16px; background: rgba(255,255,255,.95); color: #0a0a0a; border-radius: 10px; padding: 10px 14px; box-shadow: var(--shadow); display: flex; align-items: center; gap: 8px; font-size: .78rem; font-weight: 600; }
+    .crm-visual-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .4; } }
+
+    /* ── PLANS ── */
+    .plans-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: start; }
+    .plan-card { padding: 36px; border-radius: var(--radius-lg); border: 1px solid var(--border); background: #fff; transition: var(--transition); }
+    .plan-card.featured { border-color: var(--text); box-shadow: 0 0 0 1px var(--text); position: relative; }
+    .plan-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--text); color: #fff; padding: 5px 18px; border-radius: 100px; font-size: .72rem; font-weight: 600; white-space: nowrap; }
+    .plan-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+    .plan-desc { font-size: .85rem; color: var(--text-secondary); margin-bottom: 20px; }
+    .plan-price { font-size: 1.8rem; font-weight: 800; margin-bottom: 2px; }
+    .plan-price-note { font-size: .75rem; color: var(--text-light); margin-bottom: 24px; }
+    .plan-features { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+    .plan-feature { display: flex; align-items: center; gap: 10px; font-size: .85rem; color: var(--text-secondary); }
+    .plan-check { width: 18px; height: 18px; color: #22c55e; flex-shrink: 0; }
+    .plan-card .btn { width: 100%; justify-content: center; }
+
+    /* ── CLIENTS ── */
+    .clients-logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 48px; }
+    .client-logo { padding: 12px 20px; background: #fff; border-radius: 100px; border: 1px solid var(--border); font-weight: 600; color: var(--text-secondary); font-size: .82rem; transition: var(--transition); }
+    .client-logo:hover { border-color: var(--text); color: var(--text); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .testimonial-card { padding: 28px; border-radius: var(--radius); border: 1px solid var(--border); background: #fff; }
+    .testimonial-stars { color: #8d02d8; font-size: .85rem; letter-spacing: 2px; margin-bottom: 12px; }
+    .testimonial-text { font-size: .88rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-avatar { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: .82rem; flex-shrink: 0; }
+    .testimonial-name { font-weight: 600; font-size: .85rem; }
+    .testimonial-role { font-size: .78rem; color: var(--text-light); }
+
+    /* ── FAQ ── */
+    .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 8px; }
+    .faq-question { width: 100%; padding: 18px 24px; background: #fff; border: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; font-size: .92rem; font-weight: 600; text-align: left; color: var(--text); transition: var(--transition); border-radius: var(--radius); }
+    .faq-question:hover { background: var(--bg-alt); }
+    .faq-question.active { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+    .faq-chevron { width: 18px; height: 18px; transition: var(--transition); color: var(--text-light); flex-shrink: 0; }
+    .faq-question.active .faq-chevron { transform: rotate(180deg); color: var(--text); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+    .faq-answer-inner { padding: 0 24px 20px; font-size: .88rem; color: var(--text-secondary); line-height: 1.7; background: #fff; border: 1px solid var(--border); border-top: none; border-bottom-left-radius: var(--radius); border-bottom-right-radius: var(--radius); }
+
+    /* ── CTA FINAL ── */
+    .cta-final { padding: 100px 0; background: var(--text); color: #fff; text-align: center; position: relative; overflow: hidden; }
+    .cta-final::before { content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(141,2,216,.2) 0%, transparent 70%); pointer-events: none; }
+    .cta-final h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; margin-bottom: 16px; letter-spacing: -.02em; position: relative; }
+    .cta-final p { font-size: 1.05rem; color: rgba(255,255,255,.6); margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.7; position: relative; }
+    .cta-final-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; }
+    .cta-final .btn-accent { background: var(--accent); color: #fff; }
+    .cta-final .btn-secondary { border-color: rgba(255,255,255,.2); color: #fff; }
+    .cta-final .btn-secondary:hover { border-color: rgba(255,255,255,.5); }
+
+    /* ── FOOTER (Dark) ── */
+    .footer { background: #0a0a0a; color: #fff; border-top: 1px solid rgba(255,255,255,.08); padding: 64px 0 32px; }
+    .footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 48px; margin-bottom: 48px; }
+    .footer-brand .logo { margin-bottom: 12px; color: #fff; }
+    .footer-brand p { font-size: .85rem; color: rgba(255,255,255,.55); line-height: 1.6; max-width: 260px; }
+    .footer-col h4 { font-size: .78rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,.4); margin-bottom: 16px; }
+    .footer-col a { display: block; font-size: .85rem; color: rgba(255,255,255,.65); padding: 5px 0; transition: var(--transition); }
+    .footer-col a:hover { color: #d8b4fe; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: .78rem; color: rgba(255,255,255,.4); }
+
+    .mobile-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; padding: 12px 16px; background: #fff; border-top: 1px solid var(--border); }
+    .mobile-cta .btn { width: 100%; justify-content: center; }
+
+    .whatsapp-float { position: fixed; bottom: 24px; right: 24px; z-index: 998; width: 54px; height: 54px; border-radius: 50%; background: #25d366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,.35); transition: var(--transition); }
+    .whatsapp-float:hover { transform: scale(1.08); }
+    .whatsapp-float svg { width: 26px; height: 26px; fill: #fff; }
+
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity .5s ease, transform .5s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: .1s; }
+    .delay-2 { transition-delay: .2s; }
+    .delay-3 { transition-delay: .3s; }
+
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+      .hero-content { text-align: center; }
+      .hero-subtitle { margin-left: auto; margin-right: auto; }
+      .hero-actions, .hero-pills { justify-content: center; }
+      .hero-mockup { transform: none; }
+      .hero-visual:hover .hero-mockup { transform: none; }
+      .hero-float { display: none; }
+      .fc-grid-3 { grid-template-columns: 1fr; }
+      .fc-grid-2 { grid-template-columns: 1fr; }
+      .benefits-grid, .split-grid { grid-template-columns: 1fr; }
+      .split-grid-reverse .split-visual, .split-grid-reverse .split-content { order: unset; }
+      .crm-pain-stats, .crm-features-grid, .crm-steps { grid-template-columns: 1fr; }
+      .integrations-icons-wrap { width: 100%; height: 300px; }
+      .plans-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .section { padding: 64px 0; }
+      .nav { display: none; }
+      .nav.open { display: flex; flex-direction: column; position: fixed; inset: 0; background: #fff; padding: 80px 32px 32px; z-index: 999; gap: 0; }
+      .nav.open .nav-link { padding: 16px 0; border-bottom: 1px solid var(--border-light); font-size: 1rem; color: var(--text); }
+      .nav.open .nav-cta { margin-top: 24px; margin-left: 0; }
+      .menu-toggle { display: flex; z-index: 1001; }
+      .hero { padding: 120px 0 60px; }
+      .hero h1 { font-size: 2rem; }
+      .integrations-icons-wrap { height: 240px; }
+      .int-icon { width: 42px; height: 42px; border-radius: 10px; }
+      .int-icon img { width: 24px; height: 24px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .mobile-cta { display: block; }
+      .whatsapp-float { bottom: 80px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <div class="logo-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C6.5 2 2 5.8 2 10.5c0 2.8 1.8 5.3 4.5 6.8V21l3.3-1.8c.7.1 1.4.2 2.2.2 5.5 0 10-3.8 10-8.5S17.5 2 12 2z"/></svg></div>
+        Coruja
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#features" class="nav-link">Soluções</a>
+        <a href="#recursos" class="nav-link">Recursos</a>
+        <a href="#integracoes" class="nav-link">Integrações</a>
+        <a href="#planos" class="nav-link">Planos</a>
+        <a href="#clientes" class="nav-link">Clientes</a>
+        <a href="#contato" class="nav-link">Contato</a>
+        <a href="#testar" class="btn btn-primary btn-sm nav-cta">Testar Grátis <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="hero-badge-new">Novo</span>
+            Integrações com Órulo e Studio 360
+          </div>
+          <h1>Tudo para sua imobiliária <span class="highlight">vender mais</span> e trabalhar melhor.</h1>
+          <p class="hero-subtitle">Sistema de gestão, CRM, site imobiliário, integração com portais e rede de imóveis em uma só plataforma.</p>
+          <div class="hero-actions">
+            <a href="#testar" class="btn btn-primary btn-lg">Testar Grátis <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></a>
+            <a href="#features" class="btn btn-secondary btn-lg">Conhecer a Coruja <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></a>
+          </div>
+          <div class="hero-pills">
+            <span class="hero-pill"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> +300 imobiliárias</span>
+            <span class="hero-pill"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> 100% na nuvem</span>
+            <span class="hero-pill"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> +10 anos no mercado</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-mockup-wrapper">
+            <div class="hero-float hero-float-1">
+              <div class="hero-float-header">
+                <div class="hero-float-icon" style="background:#eff6ff;"><img src="https://logo.clearbit.com/caixa.gov.br" alt="Caixa"></div>
+                <div class="hero-float-title">Imóveis de Leilão</div>
+              </div>
+              <div class="hero-float-number">+25 mil</div>
+              <div class="hero-float-label">Imóveis Caixa em todo o Brasil</div>
+            </div>
+            <div class="hero-float hero-float-2">
+              <div class="hero-float-header">
+                <div class="hero-float-icon" style="background:#f3e8ff;"><svg viewBox="0 0 24 24" fill="none" stroke="#8d02d8" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+                <div class="hero-float-title">Imóveis de Tabela</div>
+              </div>
+              <div class="hero-float-number">+2 mil</div>
+              <div class="hero-float-label">Construtoras e investidores</div>
+            </div>
+            <div class="hero-float hero-float-3">
+              <div class="hero-float-header">
+                <div class="hero-float-icon" style="background:#f0fdf4;"><svg viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+                <div class="hero-float-title">Site Imobiliário</div>
+              </div>
+              <div class="hero-float-number">Integrado</div>
+              <div class="hero-float-label">Site conectado ao seu estoque</div>
+            </div>
+            <div class="hero-float hero-float-4">
+              <div class="hero-float-header">
+                <div class="hero-float-icon" style="background:#f3e8ff;"><svg viewBox="0 0 24 24" fill="none" stroke="#8d02d8" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+                <div class="hero-float-title">CRM Imobiliário</div>
+              </div>
+              <div class="hero-float-number">Funil completo</div>
+              <div class="hero-float-label">Leads, atendimentos e vendas</div>
+            </div>
+            <div class="hero-mockup">
+              <div class="hero-mockup-bar">
+                <div class="hero-mockup-dot"></div><div class="hero-mockup-dot"></div><div class="hero-mockup-dot"></div>
+                <div class="hero-mockup-url">painel.coruja.website</div>
+              </div>
+              <div class="hero-mockup-body">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=85&auto=format&fit=crop" alt="Painel do Sistema Coruja - Gestão imobiliária">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-partners">
+        <div class="partners-label">Integrado com as maiores plataformas do mercado</div>
+        <div class="partners-logos">
+          <img src="https://logo.clearbit.com/orulo.com.br" alt="Órulo">
+          <img src="https://logo.clearbit.com/zapimoveis.com.br" alt="ZAP Imóveis">
+          <img src="https://logo.clearbit.com/vivareal.com.br" alt="VivaReal">
+          <img src="https://logo.clearbit.com/olx.com.br" alt="OLX">
+          <img src="https://logo.clearbit.com/caixa.gov.br" alt="Caixa">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE CARDS -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="section-badge">Soluções</span>
+        <h2 class="section-title">Soluções completas para cada necessidade</h2>
+        <p class="section-subtitle">Plataforma flexível e escalável, pensada para o dia a dia do mercado imobiliário.</p>
+      </div>
+
+      <!-- Row 1: 3 cards -->
+      <div class="fc-grid-3">
+        <div class="fc-card fade-up delay-1">
+          <div class="fc-card-header">
+            <div><h3>Gestão de Imóveis</h3></div>
+            <div class="fc-card-icon fc-card-icon-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          </div>
+          <p class="fc-card-desc">Cadastre, organize e gerencie todos os imóveis da sua carteira com filtros avançados.</p>
+          <div class="fc-card-mockup">
+            <div class="mock-ui">
+              <div class="mock-topbar"><div class="mock-topbar-dot"></div></div>
+              <div class="mock-grid">
+                <div class="mock-card-ui"><div class="mock-card-ui-img" style="background:linear-gradient(135deg,#e9d5ff,#d8b4fe);"></div><div class="mock-card-ui-line w80"></div><div class="mock-card-ui-line w60"></div></div>
+                <div class="mock-card-ui"><div class="mock-card-ui-img" style="background:linear-gradient(135deg,#bfdbfe,#93c5fd);"></div><div class="mock-card-ui-line w80"></div><div class="mock-card-ui-line w40"></div></div>
+                <div class="mock-card-ui"><div class="mock-card-ui-img" style="background:linear-gradient(135deg,#bbf7d0,#86efac);"></div><div class="mock-card-ui-line w60"></div><div class="mock-card-ui-line w80"></div></div>
+                <div class="mock-card-ui"><div class="mock-card-ui-img" style="background:linear-gradient(135deg,#e9d5ff,#c4b5fd);"></div><div class="mock-card-ui-line w80"></div><div class="mock-card-ui-line w60"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fc-card fade-up delay-2">
+          <div class="fc-card-header">
+            <div><h3>Tabelas de Vendas</h3></div>
+            <div class="fc-card-icon fc-card-icon-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></div>
+          </div>
+          <p class="fc-card-desc">Acesse tabelas de construtoras e investidores com integração Órulo e Studio 360.</p>
+          <div class="fc-card-mockup">
+            <div class="mock-ui">
+              <div class="mock-table">
+                <div class="mock-table-header"><span></span><span style="width:70px;"></span><span style="width:40px;"></span><span style="width:50px;"></span></div>
+                <div class="mock-table-row"><span></span><span></span><span></span><span class="tag"></span></div>
+                <div class="mock-table-row"><span></span><span></span><span></span><span class="tag" style="background:#dbeafe;"></span></div>
+                <div class="mock-table-row"><span></span><span></span><span></span><span class="tag"></span></div>
+                <div class="mock-table-row"><span></span><span></span><span></span><span class="tag" style="background:#f3e8ff;"></span></div>
+                <div class="mock-table-row"><span></span><span></span><span></span><span class="tag"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fc-card fade-up delay-3">
+          <div class="fc-card-header">
+            <div><h3>CRM Imobiliário</h3></div>
+            <div class="fc-card-icon fc-card-icon-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+          </div>
+          <p class="fc-card-desc">Gerencie leads, acompanhe negociações e nunca perca uma oportunidade de venda.</p>
+          <div class="fc-card-mockup">
+            <div class="mock-ui">
+              <div class="mock-kanban">
+                <div class="mock-kanban-col"><div class="mock-kanban-header" style="background:#bfdbfe;"></div><div class="mock-kanban-item"><div class="mock-kanban-item-line"></div><div class="mock-kanban-item-line short"></div></div><div class="mock-kanban-item"><div class="mock-kanban-item-line"></div><div class="mock-kanban-item-line short"></div></div></div>
+                <div class="mock-kanban-col"><div class="mock-kanban-header" style="background:#d8b4fe;"></div><div class="mock-kanban-item"><div class="mock-kanban-item-line"></div><div class="mock-kanban-item-line short"></div></div></div>
+                <div class="mock-kanban-col"><div class="mock-kanban-header" style="background:#bbf7d0;"></div><div class="mock-kanban-item"><div class="mock-kanban-item-line"></div><div class="mock-kanban-item-line short"></div></div><div class="mock-kanban-item"><div class="mock-kanban-item-line"></div><div class="mock-kanban-item-line short"></div></div><div class="mock-kanban-item"><div class="mock-kanban-item-line"></div><div class="mock-kanban-item-line short"></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: 2 cards -->
+      <div class="fc-grid-2">
+        <div class="fc-card fade-up delay-1">
+          <div class="fc-card-header">
+            <div><h3>Site para Imobiliária</h3></div>
+            <div class="fc-card-icon fc-card-icon-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+          </div>
+          <p class="fc-card-desc">Sites modernos integrados ao sistema. Imóveis atualizados automaticamente. Modelos prontos ou sob medida.</p>
+          <div class="fc-card-mockup">
+            <div class="mock-ui">
+              <div class="mock-topbar"><div class="mock-topbar-dot"></div></div>
+              <div style="background:#fff;border-radius:8px;border:1px solid var(--border-light);padding:12px;display:flex;gap:12px;">
+                <div style="flex:1;"><div style="height:80px;background:linear-gradient(135deg,#e9d5ff,#c4b5fd);border-radius:6px;margin-bottom:8px;"></div><div class="mock-card-ui-line w80"></div><div class="mock-card-ui-line w60"></div></div>
+                <div style="flex:1;"><div style="height:80px;background:linear-gradient(135deg,#bfdbfe,#93c5fd);border-radius:6px;margin-bottom:8px;"></div><div class="mock-card-ui-line w80"></div><div class="mock-card-ui-line w40"></div></div>
+                <div style="flex:1;"><div style="height:80px;background:linear-gradient(135deg,#bbf7d0,#86efac);border-radius:6px;margin-bottom:8px;"></div><div class="mock-card-ui-line w60"></div><div class="mock-card-ui-line w80"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fc-card fade-up delay-2">
+          <div class="fc-card-header">
+            <div><h3>Dashboard e Relatórios</h3></div>
+            <div class="fc-card-icon fc-card-icon-cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
+          </div>
+          <p class="fc-card-desc">Acompanhe métricas, desempenho da equipe e resultados da sua imobiliária em tempo real.</p>
+          <div class="fc-card-mockup">
+            <div class="mock-ui">
+              <div class="mock-dashboard">
+                <div class="mock-stat-card"><div class="mock-stat-value">R$ 2.4M</div><div class="mock-stat-label"></div><div class="mock-chart"><div class="mock-chart-bar" style="height:40%;background:#bfdbfe;"></div><div class="mock-chart-bar" style="height:60%;background:#93c5fd;"></div><div class="mock-chart-bar" style="height:45%;background:#bfdbfe;"></div><div class="mock-chart-bar" style="height:80%;background:#60a5fa;"></div><div class="mock-chart-bar" style="height:55%;background:#93c5fd;"></div><div class="mock-chart-bar" style="height:90%;background:#3b82f6;"></div></div></div>
+                <div class="mock-stat-card"><div class="mock-stat-value">847</div><div class="mock-stat-label" style="width:60px;"></div><div class="mock-chart"><div class="mock-chart-bar" style="height:30%;background:#bbf7d0;"></div><div class="mock-chart-bar" style="height:50%;background:#86efac;"></div><div class="mock-chart-bar" style="height:70%;background:#4ade80;"></div><div class="mock-chart-bar" style="height:45%;background:#86efac;"></div><div class="mock-chart-bar" style="height:85%;background:#22c55e;"></div><div class="mock-chart-bar" style="height:65%;background:#4ade80;"></div></div></div>
+                <div class="mock-stat-card"><div class="mock-stat-value">156</div><div class="mock-stat-label" style="width:40px;"></div><div class="mock-chart"><div class="mock-chart-bar" style="height:50%;background:#e9d5ff;"></div><div class="mock-chart-bar" style="height:70%;background:#d8b4fe;"></div><div class="mock-chart-bar" style="height:40%;background:#e9d5ff;"></div><div class="mock-chart-bar" style="height:90%;background:#a855f7;"></div><div class="mock-chart-bar" style="height:60%;background:#d8b4fe;"></div><div class="mock-chart-bar" style="height:75%;background:#8d02d8;"></div></div></div>
+                <div class="mock-stat-card"><div class="mock-stat-value">32</div><div class="mock-stat-label" style="width:55px;"></div><div class="mock-chart"><div class="mock-chart-bar" style="height:60%;background:#e9d5ff;"></div><div class="mock-chart-bar" style="height:40%;background:#c4b5fd;"></div><div class="mock-chart-bar" style="height:80%;background:#a78bfa;"></div><div class="mock-chart-bar" style="height:50%;background:#c4b5fd;"></div><div class="mock-chart-bar" style="height:70%;background:#8b5cf6;"></div><div class="mock-chart-bar" style="height:95%;background:#7c3aed;"></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTEGRATIONS FLOATING -->
+  <section class="integrations-float" id="integracoes">
+    <div class="container">
+      <span class="section-badge section-badge-accent">Integrações</span>
+      <h2 class="section-title">Conectado com as plataformas<br>que você já usa</h2>
+      <p class="section-subtitle">Integração nativa com os maiores portais, plataformas e ferramentas do mercado imobiliário.</p>
+
+      <div class="integrations-icons-wrap">
+        <div class="int-icon" style="left:8%;top:15%;"><img src="https://logo.clearbit.com/orulo.com.br" alt="Órulo"></div>
+        <div class="int-icon" style="left:22%;top:42%;"><img src="https://logo.clearbit.com/caixa.gov.br" alt="Caixa"></div>
+        <div class="int-icon" style="left:5%;top:68%;"><img src="https://logo.clearbit.com/olx.com.br" alt="OLX"></div>
+        <div class="int-icon" style="right:8%;top:10%;"><img src="https://logo.clearbit.com/vivareal.com.br" alt="VivaReal"></div>
+        <div class="int-icon" style="right:20%;top:40%;"><img src="https://logo.clearbit.com/zapimoveis.com.br" alt="ZAP"></div>
+        <div class="int-icon" style="right:5%;top:65%;"><img src="https://logo.clearbit.com/chaves-na-mao.com.br" alt="Chaves na Mão"></div>
+        <div class="int-icon" style="left:38%;top:5%;"><span class="int-icon-text">Studio<br>360</span></div>
+        <div class="int-icon" style="right:36%;top:8%;background:var(--primary);border-color:var(--primary);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
+
+        <div class="int-center-card">
+          <div class="int-center-card-header">
+            <div class="int-center-card-logo"><img src="https://logo.clearbit.com/orulo.com.br" alt="Órulo"></div>
+            <div class="int-center-card-title">Órulo</div>
+            <div class="int-center-card-badge">INTEGRADO</div>
+          </div>
+          <div class="int-center-tags">
+            <span class="int-center-tag active">Tabelas</span>
+            <span class="int-center-tag">Materiais</span>
+            <span class="int-center-tag">Portfólios</span>
+            <span class="int-center-tag">Imóveis</span>
+          </div>
+          <div class="int-center-url">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+            orulo.com.br
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS (Active-style split) -->
+  <section class="benefits-section" id="recursos">
+    <div class="container">
+      <div class="benefits-grid">
+        <div class="benefits-content fade-up">
+          <span class="section-badge">Recursos</span>
+          <h2>Desbloqueie todo o potencial da sua imobiliária</h2>
+          <p>Ferramentas integradas que eliminam trabalho manual, aumentam a eficiência e geram mais oportunidades de negócio.</p>
+          <div class="benefits-tags">
+            <span class="benefit-tag">Gestão completa</span>
+            <span class="benefit-tag">CRM inteligente</span>
+            <span class="benefit-tag">Divulgação automática</span>
+            <span class="benefit-tag">Acesso mobile</span>
+            <span class="benefit-tag">Rede de imóveis</span>
+          </div>
+        </div>
+        <div class="benefits-list fade-up">
+          <div class="benefit-item">
+            <div class="benefit-icon" style="background:#f3e8ff;"><svg viewBox="0 0 24 24" fill="none" stroke="#8d02d8" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+            <div class="benefit-text"><h4>CRM completo</h4><p>Funil de vendas, follow-up automático, alertas e histórico de atendimento em uma interface simples.</p></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon" style="background:#eff6ff;"><svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></div>
+            <div class="benefit-text"><h4>Divulgação automática</h4><p>Publique nos portais ZAP, VivaReal, OLX e no seu site com poucos cliques.</p></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon" style="background:#f0fdf4;"><svg viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg></div>
+            <div class="benefit-text"><h4>100% na nuvem</h4><p>Acesse de qualquer lugar, em qualquer dispositivo. Dados seguros e sempre atualizados.</p></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon" style="background:#f5f3ff;"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
+            <div class="benefit-text"><h4>Rede de oportunidades</h4><p>Imóveis de construtoras, investidores, Órulo, Studio 360 e leilões da Caixa prontos para vender.</p></div>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon" style="background:#f3e8ff;"><svg viewBox="0 0 24 24" fill="none" stroke="#8d02d8" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+            <div class="benefit-text"><h4>Eficiência máxima</h4><p>Gerador de posts para Instagram, envio de tabelas em PDF por e-mail e ferramentas que economizam tempo.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEILÃO CAIXA -->
+  <section class="split-section" style="background:var(--bg-alt);">
+    <div class="container">
+      <div class="split-grid">
+        <div class="split-visual fade-up">
+          <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80&auto=format&fit=crop" alt="Imóvel">
+          <div class="split-visual-badge"><img src="https://logo.clearbit.com/caixa.gov.br" alt="CAIXA" style="height:22px;"> CAIXA</div>
+        </div>
+        <div class="split-content fade-up">
+          <span class="section-badge section-badge-accent">Exclusivo</span>
+          <h2>Imóveis de leilão e venda direta da CAIXA</h2>
+          <p>A Coruja é um dos únicos sistemas que já vem com imóveis da Caixa Econômica Federal integrados. Mais opções para seus clientes sem esforço.</p>
+          <div class="split-features">
+            <div class="split-feature"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Imóveis de leilão atualizados automaticamente</div>
+            <div class="split-feature"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Venda direta com condições especiais</div>
+            <div class="split-feature"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Filtros por cidade, tipo e faixa de preço</div>
+            <div class="split-feature"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Oportunidades com descontos de até 50%</div>
+          </div>
+          <a href="#testar" class="btn btn-primary">Ver imóveis disponíveis</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRM CORUJA -->
+  <section class="crm-section" id="crm">
+    <div class="container">
+      <div class="crm-header fade-up">
+        <span class="section-badge section-badge-accent">Coruja CRM</span>
+        <h2>O CRM imobiliário que seu gestor enxerga ao vivo</h2>
+        <p>Centralize leads de portais, Meta Ads e WhatsApp num kanban em tempo real — com distribuição automática, WhatsApp integrado e radar de compatibilidade imóvel × cliente.</p>
+      </div>
+
+      <div class="crm-pain-stats fade-up">
+        <div class="crm-pain-stat"><strong>47%</strong><span>dos leads de imobiliárias nunca são atendidos</span></div>
+        <div class="crm-pain-stat"><strong>5h+</strong><span>é o tempo médio de resposta ao lead no mercado</span></div>
+        <div class="crm-pain-stat"><strong>41%</strong><span>dos atendimentos terminam em desistência</span></div>
+      </div>
+
+      <div class="split-grid split-grid-reverse">
+        <div class="split-content fade-up">
+          <h2 style="font-size:clamp(1.4rem,2.5vw,1.8rem);margin-bottom:12px;">Pare de perder leads no WhatsApp do corretor</h2>
+          <p>Captura leads de todos os portais e anúncios, distribui automaticamente para o corretor certo, qualifica via WhatsApp com IA e conduz o atendimento do primeiro contato à proposta em PDF.</p>
+          <div class="split-features">
+            <div class="split-feature"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Captação multicanal: ZAP, OLX, Meta Ads, WhatsApp e e-mail com IA</div>
+            <div class="split-feature"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Distribuição inteligente com 7 níveis de hierarquia e bolsão</div>
+            <div class="split-feature"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Funil kanban com drag-and-drop e acompanhamento por imóvel</div>
+            <div class="split-feature"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> WhatsApp Business integrado — conversa vira lead qualificado</div>
+            <div class="split-feature"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Radar: match automático entre imóvel novo e perfil do cliente</div>
+            <div class="split-feature"><svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg> Dashboard ao vivo com relatórios de SLA por corretor</div>
+          </div>
+          <a href="#testar" class="btn btn-primary">Testar o CRM grátis</a>
+        </div>
+        <div class="split-visual fade-up delay-1">
+          <div class="crm-visual-mockup">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=85&auto=format&fit=crop" alt="Funil kanban do Coruja CRM">
+          </div>
+          <div class="crm-visual-badge"><span class="dot"></span> Atualização em tempo real</div>
+        </div>
+      </div>
+
+      <div class="crm-features-grid">
+        <div class="crm-feature-card fade-up delay-1">
+          <div class="crm-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <h4>Funil Kanban</h4>
+          <p>Funil visual que sua equipe realmente usa. Arraste leads entre etapas e acompanhe temperatura, origem e compromissos.</p>
+        </div>
+        <div class="crm-feature-card fade-up delay-2">
+          <div class="crm-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+          <h4>Distribuição Automática</h4>
+          <p>Lead no corretor certo, na hora certa — sem planilha. Rodízio, captador, memória de sucesso e bolsão configuráveis.</p>
+        </div>
+        <div class="crm-feature-card fade-up delay-3">
+          <div class="crm-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+          <h4>WhatsApp + IA</h4>
+          <p>Conversa vira lead qualificado. A IA extrai perfil automaticamente: finalidade, região, preço e quartos.</p>
+        </div>
+        <div class="crm-feature-card fade-up delay-1">
+          <div class="crm-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></div>
+          <h4>Radar de Imóveis</h4>
+          <p>Novo imóvel? O sistema avisa quem tem cliente compatível. Envie WhatsApp com o match em 1 clique.</p>
+        </div>
+        <div class="crm-feature-card fade-up delay-2">
+          <div class="crm-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></div>
+          <h4>Bolsão de Leads</h4>
+          <p>Nenhum lead perdido. Corretores resgatam leads disponíveis em segundos, com atualização ao vivo.</p>
+        </div>
+        <div class="crm-feature-card fade-up delay-3">
+          <div class="crm-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></div>
+          <h4>Proposta em PDF</h4>
+          <p>Termo de visita e proposta comercial gerados automaticamente. Prontos para enviar em segundos.</p>
+        </div>
+      </div>
+
+      <div class="crm-steps fade-up">
+        <div class="crm-step">
+          <div class="crm-step-num">1</div>
+          <h4>Conecte</h4>
+          <p>Integre portais, Meta Ads e WhatsApp Business em minutos. Leads chegam de todos os canais num só lugar.</p>
+        </div>
+        <div class="crm-step">
+          <div class="crm-step-num">2</div>
+          <h4>Distribua</h4>
+          <p>Leads caem no funil do corretor certo, automaticamente. Com confirmação rápida e alertas em tempo real.</p>
+        </div>
+        <div class="crm-step">
+          <div class="crm-step-num">3</div>
+          <h4>Feche</h4>
+          <p>Acompanhe cada imóvel sugerido até a proposta, com relatórios de SLA e visão ao vivo para o gestor.</p>
+        </div>
+      </div>
+
+      <div class="crm-cta fade-up">
+        <a href="#testar" class="btn btn-accent btn-lg">Seu primeiro lead no funil em minutos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANOS -->
+  <section class="section" id="planos">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="section-badge">Planos</span>
+        <h2 class="section-title">Escolha o plano ideal</h2>
+        <p class="section-subtitle">Transparente e sem surpresas. Teste grátis antes de decidir.</p>
+      </div>
+      <div class="plans-grid">
+        <div class="plan-card fade-up">
+          <div class="plan-name">Sistema</div>
+          <div class="plan-desc">Gestão completa sem site.</div>
+          <div class="plan-price">R$ 600</div>
+          <div class="plan-price-note">por ano</div>
+          <div class="plan-features">
+            <div class="plan-feature"><svg class="plan-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Gestão de imóveis</div>
+            <div class="plan-feature"><svg class="plan-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Tabelas de construtoras</div>
+            <div class="plan-feature"><svg class="plan-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Acesso mobile</div>
+            <div class="plan-feature"><svg class="plan-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Posts para Instagram</div>
+          </div>
+          <a href="#testar" class="btn btn-outline">Testar Grátis</a>
+        </div>
+        <div class="plan-card featured fade-up">
+          <div class="plan-badge">Mais escolhido</div>
+          <div class="plan-name">Sistema + Site</div>
+          <div class="plan-desc">Gestão + presença digital profissional.</div>
+          <div class="plan-price">R$ 430</div>
+          <div class="plan-price-note">por trimestre</div>
+          <div class="plan-features">
+            <div class="plan-feature"><svg class="plan-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Tudo do plano Sistema</div>
+            <div class="plan-feature"><svg class="plan-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Site integrado</div>
+            <div class="plan-feature"><svg class="plan-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Imóveis sincronizados</div>
+            <div class="plan-feature"><svg class="plan-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Captação de leads</div>
+            <div class="plan-feature"><svg class="plan-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Integração com portais</div>
+          </div>
+          <a href="#testar" class="btn btn-primary">Testar Grátis</a>
+        </div>
+        <div class="plan-card fade-up">
+          <div class="plan-name">Site Sob Medida</div>
+          <div class="plan-desc">Exclusividade e design personalizado.</div>
+          <div class="plan-price">Sob consulta</div>
+          <div class="plan-price-note">projeto personalizado</div>
+          <div class="plan-features">
+            <div class="plan-feature"><svg class="plan-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Tudo do plano anterior</div>
+            <div class="plan-feature"><svg class="plan-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Design exclusivo</div>
+            <div class="plan-feature"><svg class="plan-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Identidade da sua marca</div>
+            <div class="plan-feature"><svg class="plan-check" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>Acompanhamento dedicado</div>
+          </div>
+          <a href="#contato" class="btn btn-outline">Solicitar Projeto</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENTES -->
+  <section class="section" style="background:var(--bg-alt);" id="clientes">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="section-badge">Clientes</span>
+        <h2 class="section-title">+300 imobiliárias confiam na Coruja</h2>
+      </div>
+      <div class="clients-logos fade-up">
+        <span class="client-logo">Aline Caetano</span><span class="client-logo">Paschoal Imóveis</span><span class="client-logo">Maiorano</span><span class="client-logo">Seu Imóvel na Praia</span><span class="client-logo">Luz Divina</span><span class="client-logo">Praia Grande Imóveis</span><span class="client-logo">HM Imóveis</span><span class="client-logo">Daniela Scherer</span>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-up">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"O Coruja revolucionou nossa gestão imobiliária. Sistema intuitivo, suporte excelente e resultados comprovados."</p>
+          <div class="testimonial-author"><div class="testimonial-avatar" style="background:#8d02d8;">JS</div><div><div class="testimonial-name">João Silva</div><div class="testimonial-role">Diretor – Silva Imóveis</div></div></div>
+        </div>
+        <div class="testimonial-card fade-up">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"A praticidade de acessar de qualquer lugar e a integração com nosso site aumentou nossas vendas em 40%."</p>
+          <div class="testimonial-author"><div class="testimonial-avatar" style="background:#0a0a0a;">AC</div><div><div class="testimonial-name">Ana Costa</div><div class="testimonial-role">Proprietária – Costa Negócios</div></div></div>
+        </div>
+        <div class="testimonial-card fade-up">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Sistema robusto e confiável. O suporte técnico é diferenciado e a plataforma nunca nos deixou na mão."</p>
+          <div class="testimonial-author"><div class="testimonial-avatar" style="background:#6b00a8;">RS</div><div><div class="testimonial-name">Roberto Santos</div><div class="testimonial-role">Sócio – RS Corretora</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="section-badge">FAQ</span>
+        <h2 class="section-title">Perguntas frequentes</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item fade-up"><button class="faq-question">Como funciona o teste grátis?<svg class="faq-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Teste o sistema completo por 7 dias sem compromisso. Sem cartão de crédito.</div></div></div>
+        <div class="faq-item fade-up"><button class="faq-question">O sistema funciona pelo celular?<svg class="faq-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Sim! 100% online, funciona em qualquer navegador. Sem instalação.</div></div></div>
+        <div class="faq-item fade-up"><button class="faq-question">Posso migrar de outro sistema?<svg class="faq-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Sim, oferecemos ferramentas de importação e suporte completo para migração.</div></div></div>
+        <div class="faq-item fade-up"><button class="faq-question">Como funciona a integração com Órulo?<svg class="faq-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Acesse tabelas, materiais e portfólios de construtoras em tempo real dentro do sistema.</div></div></div>
+        <div class="faq-item fade-up"><button class="faq-question">O sistema já vem com imóveis?<svg class="faq-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Sim! Único sistema com imóveis de construtoras, Órulo, Studio 360 e leilão CAIXA.</div></div></div>
+        <div class="faq-item fade-up"><button class="faq-question">O site é integrado ao sistema?<svg class="faq-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Sim, totalmente integrado. Atualize um imóvel e ele aparece automaticamente no site.</div></div></div>
+        <div class="faq-item fade-up"><button class="faq-question">Como funciona a integração com portais?<svg class="faq-chevron" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/></svg></button><div class="faq-answer"><div class="faq-answer-inner">Integração com ZAP, VivaReal, OLX e outros portais. Publicação automática.</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final" id="testar">
+    <div class="container">
+      <h2 class="fade-up">Veja na prática como a Coruja<br>pode ajudar sua imobiliária.</h2>
+      <p class="fade-up">Teste a plataforma gratuitamente e descubra qual solução faz mais sentido para sua empresa.</p>
+      <div class="cta-final-actions fade-up">
+        <a href="https://www.corujasistemas.com.br/" class="btn btn-accent btn-lg" target="_blank">Testar Grátis <svg class="btn-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"/></svg></a>
+        <a href="#contato" class="btn btn-secondary btn-lg">Falar com Vendas</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="section" id="contato" style="background:var(--bg-alt);">
+    <div class="container">
+      <div class="split-grid">
+        <div class="fade-up">
+          <span class="section-badge">Contato</span>
+          <h2 style="font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin-bottom:16px;letter-spacing:-.02em;">Fale com a Coruja</h2>
+          <p style="color:var(--text-secondary);margin-bottom:32px;">Preencha o formulário ou fale direto com nossa equipe.</p>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div style="display:flex;align-items:center;gap:12px;"><div class="benefit-icon" style="background:#f0fdf4;"><svg viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.12.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.58 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><strong style="font-size:.9rem;">Vendas:</strong> <span style="color:var(--text-secondary);font-size:.9rem;">(13) 99127-0719</span></div></div>
+            <div style="display:flex;align-items:center;gap:12px;"><div class="benefit-icon" style="background:#eff6ff;"><svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.12.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.58 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><strong style="font-size:.9rem;">Suporte:</strong> <span style="color:var(--text-secondary);font-size:.9rem;">(13) 98107-6548</span></div></div>
+            <div style="display:flex;align-items:center;gap:12px;"><div class="benefit-icon" style="background:#f5f3ff;"><svg viewBox="0 0 24 24" fill="none" stroke="#8b5cf6" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><strong style="font-size:.9rem;">E-mail:</strong> <span style="color:var(--text-secondary);font-size:.9rem;">contato@corujasistemas.com.br</span></div></div>
+          </div>
+        </div>
+        <div class="fade-up">
+          <form style="background:#fff;padding:36px;border-radius:var(--radius-lg);border:1px solid var(--border);display:flex;flex-direction:column;gap:14px;">
+            <input type="text" placeholder="Seu nome" style="width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:.88rem;font-family:inherit;outline:none;transition:var(--transition);" onfocus="this.style.borderColor='#0f172a'" onblur="this.style.borderColor='var(--border)'">
+            <input type="email" placeholder="Seu e-mail" style="width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:.88rem;font-family:inherit;outline:none;transition:var(--transition);" onfocus="this.style.borderColor='#0f172a'" onblur="this.style.borderColor='var(--border)'">
+            <input type="tel" placeholder="WhatsApp" style="width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:.88rem;font-family:inherit;outline:none;transition:var(--transition);" onfocus="this.style.borderColor='#0f172a'" onblur="this.style.borderColor='var(--border)'">
+            <textarea placeholder="Como podemos ajudar?" rows="3" style="width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:.88rem;font-family:inherit;outline:none;resize:vertical;transition:var(--transition);" onfocus="this.style.borderColor='#0f172a'" onblur="this.style.borderColor='var(--border)'"></textarea>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Enviar Mensagem</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo"><div class="logo-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C6.5 2 2 5.8 2 10.5c0 2.8 1.8 5.3 4.5 6.8V21l3.3-1.8c.7.1 1.4.2 2.2.2 5.5 0 10-3.8 10-8.5S17.5 2 12 2z"/></svg></div> Coruja</a>
+          <p>Tecnologia para imobiliárias venderem mais e trabalharem melhor. Praia Grande, SP.</p>
+        </div>
+        <div class="footer-col"><h4>Soluções</h4><a href="#features">Sistema de Gestão</a><a href="#features">Coruja Nuvem</a><a href="#features">Sites</a><a href="#features">Tabelas de Vendas</a><a href="#integracoes">Integrações</a></div>
+        <div class="footer-col"><h4>Recursos</h4><a href="#crm">CRM</a><a href="#recursos">Gestão de imóveis</a><a href="#recursos">Divulgação</a><a href="#integracoes">Portais</a></div>
+        <div class="footer-col"><h4>Empresa</h4><a href="#planos">Planos</a><a href="#clientes">Clientes</a><a href="#faq">FAQ</a><a href="#contato">Contato</a></div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Coruja Sistemas. Todos os direitos reservados.</span>
+        <span>Praia Grande, SP</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="mobile-cta"><a href="#testar" class="btn btn-primary">Testar Grátis por 7 Dias</a></div>
+
+  <a href="https://wa.me/5513991270719" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.612.638l4.68-1.318A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.24 0-4.31-.727-5.99-1.96l-.418-.313-2.783.784.714-2.608-.344-.547A9.953 9.953 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+  </a>
+
+  <script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 20));
+
+    const menuToggle = document.getElementById('menuToggle');
+    const nav = document.getElementById('nav');
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+      const s = menuToggle.querySelectorAll('span');
+      if(nav.classList.contains('open')){s[0].style.transform='rotate(45deg) translate(5px,5px)';s[1].style.opacity='0';s[2].style.transform='rotate(-45deg) translate(5px,-5px)';}
+      else{s[0].style.transform='';s[1].style.opacity='';s[2].style.transform='';}
+    });
+    nav.querySelectorAll('a[href^="#"]').forEach(l=>l.addEventListener('click',()=>{nav.classList.remove('open');menuToggle.querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity='';});}));
+
+    const obs = new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+    document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+
+    document.querySelectorAll('.faq-question').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const w=btn.classList.contains('active');
+        document.querySelectorAll('.faq-question.active').forEach(b=>{b.classList.remove('active');b.parentElement.querySelector('.faq-answer').style.maxHeight=null;});
+        if(!w){btn.classList.add('active');const a=btn.parentElement.querySelector('.faq-answer');a.style.maxHeight=a.scrollHeight+'px';}
+      });
+    });
+  </script>
+</body>
+</html>
