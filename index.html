@@ -74,6 +74,7 @@
     .header.scrolled { background: rgba(255,255,255,.92); backdrop-filter: blur(16px) saturate(1.8); box-shadow: 0 1px 0 rgba(0,0,0,.06); }
     .header-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1280px; margin: 0 auto; padding: 0 24px; }
     .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.2rem; color: var(--text); }
+    .logo-img { height: 36px; width: auto; display: block; }
     .logo-dot { width: 32px; height: 32px; border-radius: 10px; background: var(--primary); display: flex; align-items: center; justify-content: center; }
     .logo-dot svg { width: 18px; height: 18px; color: #fff; }
     .nav { display: flex; align-items: center; gap: 32px; }
@@ -117,25 +118,25 @@
     .hero-mockup-body img { width: 100%; display: block; }
 
     /* Floating stats */
-    .hero-float { position: absolute; background: #fff; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow-lg); padding: 14px 16px; z-index: 10; max-width: 168px; }
+    .hero-float { position: absolute; background: #0a0a0a; border-radius: var(--radius); border: 1px solid rgba(255,255,255,.1); box-shadow: 0 12px 32px rgba(0,0,0,.25); padding: 14px 16px; z-index: 10; max-width: 168px; }
     .hero-float-1 { left: -52px; top: 24px; }
     .hero-float-2 { left: -56px; bottom: 48px; }
     .hero-float-3 { right: -48px; top: 56px; }
     .hero-float-4 { right: -52px; bottom: 72px; }
     .hero-float-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
-    .hero-float-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .hero-float-icon svg { width: 16px; height: 16px; }
+    .hero-float-icon { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: rgba(255,255,255,.1) !important; }
+    .hero-float-icon svg { width: 16px; height: 16px; stroke: #d8b4fe; }
     .hero-float-icon img { width: 18px; height: 18px; object-fit: contain; }
-    .hero-float-title { font-size: .78rem; font-weight: 700; color: var(--text); line-height: 1.2; }
-    .hero-float-number { font-size: 1.15rem; font-weight: 800; color: var(--primary); line-height: 1.2; margin-bottom: 2px; }
-    .hero-float-label { font-size: .68rem; color: var(--text-light); line-height: 1.35; }
+    .hero-float-title { font-size: .78rem; font-weight: 700; color: #fff; line-height: 1.2; }
+    .hero-float-number { font-size: 1.15rem; font-weight: 800; color: #b44aee; line-height: 1.2; margin-bottom: 2px; }
+    .hero-float-label { font-size: .68rem; color: rgba(255,255,255,.55); line-height: 1.35; }
 
     /* ── PARTNERS BAR ── */
     .partners { padding: 32px 0 0; }
     .partners-label { text-align: center; font-size: .78rem; font-weight: 500; color: var(--text-light); margin-bottom: 24px; }
     .partners-logos { display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
-    .partners-logos img { height: 28px; opacity: .35; filter: grayscale(100%); transition: var(--transition); }
-    .partners-logos img:hover { opacity: .8; filter: grayscale(0%); }
+    .partners-logos img { height: 32px; width: auto; max-width: 120px; object-fit: contain; opacity: .85; transition: var(--transition); }
+    .partners-logos img:hover { opacity: 1; transform: scale(1.04); }
 
     /* ── FEATURE CARDS (Active Style) ── */
     .features-section { padding: 120px 0; }
@@ -212,23 +213,10 @@
     .integrations-float { padding: 100px 0; position: relative; text-align: center; overflow: hidden; background: var(--bg-alt); }
     .integrations-float .section-title { margin-bottom: 12px; }
     .integrations-float .section-subtitle { margin-bottom: 48px; }
-    .integrations-icons-wrap { position: relative; width: 600px; height: 340px; margin: 0 auto; }
-    .int-icon { position: absolute; width: 52px; height: 52px; border-radius: 14px; background: #fff; border: 1px solid var(--border); box-shadow: var(--shadow); display: flex; align-items: center; justify-content: center; overflow: hidden; transition: var(--transition); z-index: 1; }
-    .int-icon:hover { transform: scale(1.15); box-shadow: var(--shadow-lg); z-index: 2; }
-    .int-icon img { width: 32px; height: 32px; object-fit: contain; }
-    .int-icon-text { font-weight: 800; font-size: .6rem; color: var(--primary); text-align: center; line-height: 1.1; }
-    .int-center-card { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); background: #fff; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow-lg); padding: 20px 28px; text-align: left; min-width: 320px; z-index: 3; }
-    .int-center-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-    .int-center-card-logo { width: 28px; height: 28px; border-radius: 6px; overflow: hidden; }
-    .int-center-card-logo img { width: 100%; height: 100%; object-fit: contain; }
-    .int-center-card-title { font-weight: 700; font-size: .9rem; }
-    .int-center-card-badge { padding: 3px 10px; border-radius: 6px; background: var(--accent-light); color: var(--primary); font-size: .68rem; font-weight: 700; letter-spacing: .02em; margin-left: auto; }
-    .int-center-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
-    .int-center-tag { padding: 4px 10px; border-radius: 6px; font-size: .72rem; font-weight: 500; }
-    .int-center-tag.active { background: #8d02d8; color: #fff; }
-    .int-center-tag:not(.active) { background: var(--bg-alt); color: var(--text-secondary); border: 1px solid var(--border); }
-    .int-center-url { display: flex; align-items: center; gap: 8px; font-size: .78rem; color: var(--text-light); }
-    .int-center-url svg { width: 14px; height: 14px; }
+    .integrations-icons-wrap { position: relative; width: 100%; max-width: 1100px; height: 420px; margin: 0 auto; }
+    .int-icon { position: absolute; width: 108px; height: 40px; padding: 0; border-radius: 8px; background: #fff; border: 1px solid var(--border); box-shadow: var(--shadow); overflow: hidden; transition: var(--transition); z-index: 1; line-height: 0; }
+    .int-icon:hover { transform: scale(1.08); box-shadow: var(--shadow-lg); z-index: 2; }
+    .int-icon img { width: 100%; height: 100%; object-fit: contain; object-position: center; display: block; }
 
     /* ── BENEFITS (Split Layout) ── */
     .benefits-section { padding: 100px 0; }
@@ -391,7 +379,7 @@
       .benefits-grid, .split-grid { grid-template-columns: 1fr; }
       .split-grid-reverse .split-visual, .split-grid-reverse .split-content { order: unset; }
       .crm-pain-stats, .crm-features-grid, .crm-steps { grid-template-columns: 1fr; }
-      .integrations-icons-wrap { width: 100%; height: 300px; }
+      .integrations-icons-wrap { max-width: 100%; height: 520px; }
       .plans-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
       .testimonials-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: repeat(2, 1fr); }
@@ -405,9 +393,8 @@
       .menu-toggle { display: flex; z-index: 1001; }
       .hero { padding: 120px 0 60px; }
       .hero h1 { font-size: 2rem; }
-      .integrations-icons-wrap { height: 240px; }
-      .int-icon { width: 42px; height: 42px; border-radius: 10px; }
-      .int-icon img { width: 24px; height: 24px; }
+      .integrations-icons-wrap { height: 560px; }
+      .int-icon { width: 88px; height: 34px; border-radius: 6px; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
       .mobile-cta { display: block; }
@@ -421,8 +408,7 @@
   <header class="header" id="header">
     <div class="header-inner">
       <a href="#" class="logo">
-        <div class="logo-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C6.5 2 2 5.8 2 10.5c0 2.8 1.8 5.3 4.5 6.8V21l3.3-1.8c.7.1 1.4.2 2.2.2 5.5 0 10-3.8 10-8.5S17.5 2 12 2z"/></svg></div>
-        Coruja
+        <img src="images/logo-coruja.png" alt="Coruja Sistemas" class="logo-img">
       </a>
       <nav class="nav" id="nav">
         <a href="#features" class="nav-link">Soluções</a>
@@ -463,7 +449,7 @@
           <div class="hero-mockup-wrapper">
             <div class="hero-float hero-float-1">
               <div class="hero-float-header">
-                <div class="hero-float-icon" style="background:#eff6ff;"><img src="https://logo.clearbit.com/caixa.gov.br" alt="Caixa"></div>
+                <div class="hero-float-icon" style="background:#eff6ff;"><img src="images/caixa-logo.webp" alt="Caixa"></div>
                 <div class="hero-float-title">Imóveis de Leilão</div>
               </div>
               <div class="hero-float-number">+25 mil</div>
@@ -499,7 +485,7 @@
                 <div class="hero-mockup-url">painel.coruja.website</div>
               </div>
               <div class="hero-mockup-body">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=85&auto=format&fit=crop" alt="Painel do Sistema Coruja - Gestão imobiliária">
+                <img src="images/painel-administrativo.png" alt="Painel do Sistema Coruja - Gestão imobiliária">
               </div>
             </div>
           </div>
@@ -509,11 +495,11 @@
       <div class="hero-partners">
         <div class="partners-label">Integrado com as maiores plataformas do mercado</div>
         <div class="partners-logos">
-          <img src="https://logo.clearbit.com/orulo.com.br" alt="Órulo">
-          <img src="https://logo.clearbit.com/zapimoveis.com.br" alt="ZAP Imóveis">
-          <img src="https://logo.clearbit.com/vivareal.com.br" alt="VivaReal">
-          <img src="https://logo.clearbit.com/olx.com.br" alt="OLX">
-          <img src="https://logo.clearbit.com/caixa.gov.br" alt="Caixa">
+          <img src="images/orulo.svg" alt="Órulo">
+          <img src="images/studio360.svg" alt="Studio 360">
+          <img src="images/portais/canal-pro.png" alt="ZAP Imóveis">
+          <img src="images/portais/imovel-web.png" alt="ImovelWeb">
+          <img src="images/caixa-logo.webp" alt="Caixa">
         </div>
       </div>
     </div>
@@ -635,33 +621,29 @@
       <h2 class="section-title">Conectado com as plataformas<br>que você já usa</h2>
       <p class="section-subtitle">Integração nativa com os maiores portais, plataformas e ferramentas do mercado imobiliário.</p>
 
-      <div class="integrations-icons-wrap">
-        <div class="int-icon" style="left:8%;top:15%;"><img src="https://logo.clearbit.com/orulo.com.br" alt="Órulo"></div>
-        <div class="int-icon" style="left:22%;top:42%;"><img src="https://logo.clearbit.com/caixa.gov.br" alt="Caixa"></div>
-        <div class="int-icon" style="left:5%;top:68%;"><img src="https://logo.clearbit.com/olx.com.br" alt="OLX"></div>
-        <div class="int-icon" style="right:8%;top:10%;"><img src="https://logo.clearbit.com/vivareal.com.br" alt="VivaReal"></div>
-        <div class="int-icon" style="right:20%;top:40%;"><img src="https://logo.clearbit.com/zapimoveis.com.br" alt="ZAP"></div>
-        <div class="int-icon" style="right:5%;top:65%;"><img src="https://logo.clearbit.com/chaves-na-mao.com.br" alt="Chaves na Mão"></div>
-        <div class="int-icon" style="left:38%;top:5%;"><span class="int-icon-text">Studio<br>360</span></div>
-        <div class="int-icon" style="right:36%;top:8%;background:var(--primary);border-color:var(--primary);"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg></div>
+      <div class="integrations-icons-wrap fade-up">
+        <div class="int-icon" style="left:4%;top:8%;"><img src="images/orulo.svg" alt="Órulo"></div>
+        <div class="int-icon" style="left:16%;top:2%;"><img src="images/studio360.svg" alt="Studio 360"></div>
+        <div class="int-icon" style="left:30%;top:14%;"><img src="images/caixa-logo.webp" alt="Caixa"></div>
+        <div class="int-icon" style="left:44%;top:6%;"><img src="images/portais/canal-pro.png" alt="Canal Pro"></div>
+        <div class="int-icon" style="left:58%;top:12%;"><img src="images/portais/imovel-web.png" alt="ImovelWeb"></div>
+        <div class="int-icon" style="left:72%;top:4%;"><img src="images/portais/chaves-na-mao.png" alt="Chaves na Mão"></div>
+        <div class="int-icon" style="left:86%;top:16%;"><img src="images/portais/buskaza.png" alt="Buskaza"></div>
 
-        <div class="int-center-card">
-          <div class="int-center-card-header">
-            <div class="int-center-card-logo"><img src="https://logo.clearbit.com/orulo.com.br" alt="Órulo"></div>
-            <div class="int-center-card-title">Órulo</div>
-            <div class="int-center-card-badge">INTEGRADO</div>
-          </div>
-          <div class="int-center-tags">
-            <span class="int-center-tag active">Tabelas</span>
-            <span class="int-center-tag">Materiais</span>
-            <span class="int-center-tag">Portfólios</span>
-            <span class="int-center-tag">Imóveis</span>
-          </div>
-          <div class="int-center-url">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
-            orulo.com.br
-          </div>
-        </div>
+        <div class="int-icon" style="left:2%;top:38%;"><img src="images/portais/casa-mineira.png" alt="Casa Mineira"></div>
+        <div class="int-icon" style="left:14%;top:48%;"><img src="images/portais/creci-sp.png" alt="CRECI-SP"></div>
+        <div class="int-icon" style="left:26%;top:36%;"><img src="images/portais/homer.png" alt="Homer"></div>
+        <div class="int-icon" style="left:40%;top:44%;"><img src="images/portais/imovel-guide.png" alt="Imóvel Guide"></div>
+        <div class="int-icon" style="left:54%;top:38%;"><img src="images/portais/sp-imovel.png" alt="SP Imóvel"></div>
+        <div class="int-icon" style="left:68%;top:46%;"><img src="images/portais/compre-e-alugue.png" alt="Compre e Alugue"></div>
+        <div class="int-icon" style="left:82%;top:40%;"><img src="images/portais/dream-casa.png" alt="Dream Casa"></div>
+
+        <div class="int-icon" style="left:8%;top:72%;"><img src="images/portais/123-i.png" alt="123i"></div>
+        <div class="int-icon" style="left:22%;top:78%;"><img src="images/portais/mgf-imoveis.png" alt="MGF Imóveis"></div>
+        <div class="int-icon" style="left:36%;top:70%;"><img src="images/portais/chavee-p.png" alt="ChaveeP"></div>
+        <div class="int-icon" style="left:50%;top:76%;"><img src="images/portais/coruja-portal.png" alt="Coruja Portal"></div>
+        <div class="int-icon" style="left:64%;top:72%;"><img src="images/portais/portal-auxiliar.png" alt="Portal Auxiliar"></div>
+        <div class="int-icon" style="left:78%;top:78%;"><img src="images/portais/coruja.png" alt="Coruja"></div>
       </div>
     </div>
   </section>
@@ -713,8 +695,8 @@
     <div class="container">
       <div class="split-grid">
         <div class="split-visual fade-up">
-          <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80&auto=format&fit=crop" alt="Imóvel">
-          <div class="split-visual-badge"><img src="https://logo.clearbit.com/caixa.gov.br" alt="CAIXA" style="height:22px;"> CAIXA</div>
+          <img src="images/painel-administrativo.png" alt="Sistema Coruja com imóveis da Caixa">
+          <div class="split-visual-badge"><img src="images/caixa-logo.webp" alt="CAIXA" style="height:22px;"> CAIXA</div>
         </div>
         <div class="split-content fade-up">
           <span class="section-badge section-badge-accent">Exclusivo</span>
@@ -763,7 +745,7 @@
         </div>
         <div class="split-visual fade-up delay-1">
           <div class="crm-visual-mockup">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=85&auto=format&fit=crop" alt="Funil kanban do Coruja CRM">
+            <img src="images/crm-preview.png" alt="Funil kanban do Coruja CRM">
           </div>
           <div class="crm-visual-badge"><span class="dot"></span> Atualização em tempo real</div>
         </div>
@@ -973,7 +955,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#" class="logo"><div class="logo-dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C6.5 2 2 5.8 2 10.5c0 2.8 1.8 5.3 4.5 6.8V21l3.3-1.8c.7.1 1.4.2 2.2.2 5.5 0 10-3.8 10-8.5S17.5 2 12 2z"/></svg></div> Coruja</a>
+          <a href="#" class="logo"><img src="images/logo-coruja.png" alt="Coruja Sistemas" class="logo-img"></a>
           <p>Tecnologia para imobiliárias venderem mais e trabalharem melhor. Praia Grande, SP.</p>
         </div>
         <div class="footer-col"><h4>Soluções</h4><a href="#features">Sistema de Gestão</a><a href="#features">Coruja Nuvem</a><a href="#features">Sites</a><a href="#features">Tabelas de Vendas</a><a href="#integracoes">Integrações</a></div>
